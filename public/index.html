@@ -22,6 +22,7 @@
             baby_blue: '#3f63f2', // vivid blue
             medium_blue: '#7307f7',
             purple_text: '#c414ff',
+            red: '#a31010',
             green: '#0f8c1e' // vivid green
 
           },
@@ -50,15 +51,22 @@
 
         <!-- content / tasks -->
          <div>
-            <div class="flex sm:flex-row flex-row sm:justify-center sm:items-center justify-center items-center bg-[#FFFFFF] 
-            rounded-md px-4 md:w-[60vw] md:h-[8vh] sm:w-[90vw] sm:h-[20vh] hover:shadow-2xl transition duration-300 hover:border-baby_blue border-[1px]">
-                <label class="flex items-center gap-2 cursor-pointer">
+            <div class="flex sm:flex-row flex-row sm:justify-center sm:items-center sm:justify-between justify-between justify-center items-center bg-[#FFFFFF] border-gray-200 
+            rounded-md px-4 md:w-[60vw] md:h-[8vh] sm:w-[90%] sm:h-[30vh] hover:shadow-2xl transition duration-300 hover:border-baby_blue border-[1px]">
+            <div class="flex sm:flex-row flex-row gap-2">
+              <label class="flex items-center gap-2 cursor-pointer">
                     <input 
                         type="checkbox" 
                         class="w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300"
                     >
                 </label>
                 <p class="md:text-2xl sm:text-xl">Fazer compras no mercado</p>
+            </div>
+            <div class="flex sm:flex-row flex-row gap-2">
+               <button class="flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8"><img src="./assets/write.svg" alt="write.svg"></button>
+                <button class="flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8"><img src="./assets/delete.svg" alt="trash.svg"></button>
+            </div>
+               
             </div>
          </div>
     </section>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO</title>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            white: '#E7F2EF', // soft white
+            purple: '#EBD6FB', // light purple
+            pink: '#FFDFEF', // light pink
+            blue: '#1e13f2',
+            baby_blue: '#3f63f2', // vivid blue
+            medium_blue: '#7307f7',
+            purple_text: '#c414ff',
+            green: '#0f8c1e' // vivid green
+
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'sans-serif'],
+            'oswald': ['Oswald', 'sans-serif'],
+            'open_sans': ['Open Sans', 'sans-serif'],
+            'ibm_plex_sans': ['IBM Plex Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+    <section class="flex flex-col sm:flex-col sm:justify-center sm:items-center justify-center items-center h-screen bg-[radial-gradient(circle_at_top_left,#EBD6FB_0%,#E7F2EF_50%,transparent_70%),radial-gradient(circle_at_bottom_right,#FFDFEF_0%,#E7F2EF_50%,transparent_70%)]">
+        <!-- header -->
+        <div class="flex sm:flex-row flex-row sm:justify-center sm:items-center justify-center items-center gap-4 mb-12">
+            <div class="flex sm:justify-center sm:items-center justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text w-14 h-14 rounded-md">
+                <svg class="size-10" fill="none" stroke="current">
+                    <use xlink:href="./assets/checklist.svg"></use>
+                    </svg>
+            </div>
+            <h1 class="text-5xl font-bold leading-[1.5] bg-gradient-to-r from-blue via-medium_blue to-purple_text bg-clip-text text-transparent">My Tasks</h1>
+        </div>
+
+        <!-- content / tasks -->
+         <div>
+            <div class="flex sm:flex-row flex-row sm:justify-center sm:items-center justify-center items-center bg-[#FFFFFF] 
+            rounded-md px-4 md:w-[60vw] md:h-[8vh] sm:w-[90vw] sm:h-[20vh] hover:shadow-2xl transition duration-300 hover:border-baby_blue border-[1px]">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input 
+                        type="checkbox" 
+                        class="w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300"
+                    >
+                </label>
+                <p class="md:text-2xl sm:text-xl">Fazer compras no mercado</p>
+            </div>
+         </div>
+    </section>
+</body>
+</html>

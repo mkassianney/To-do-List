@@ -41,84 +41,82 @@
   </script>
 </head>
 <body>
-    <section class="flex flex-col sm:flex-col sm:justify-center sm:items-center justify-center items-center h-screen bg-[radial-gradient(circle_at_top_left,#EBD6FB_0%,#E7F2EF_50%,transparent_70%),radial-gradient(circle_at_bottom_right,#FFDFEF_0%,#E7F2EF_50%,transparent_70%)]">
-        <!-- header -->
-        <div class="flex sm:flex-row flex-row sm:justify-center sm:items-center justify-center items-center gap-4 mb-12">
-            <div class="flex sm:justify-center sm:items-center justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text w-14 h-14 rounded-md">
-                <svg class="size-10" fill="none" stroke="current">
-                    <use xlink:href="./assets/checklist.svg"></use>
-                    </svg>
-            </div>
-            <h1 class="text-5xl font-bold leading-[1.5] bg-gradient-to-r from-blue via-medium_blue to-purple_text bg-clip-text text-transparent">My Tasks</h1>
+    <section class="flex flex-col justify-center items-center min-h-screen px-4 bg-[radial-gradient(circle_at_top_left,#EBD6FB_0%,#E7F2EF_50%,transparent_70%),radial-gradient(circle_at_bottom_right,#FFDFEF_0%,#E7F2EF_50%,transparent_70%)]">
+  
+      <!-- header -->
+      <div class="flex flex-col items-center gap-4 mb-12 text-center">
+        <div class="flex items-center gap-4">
+          <div class="flex justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text w-14 h-14 rounded-xl">
+            <svg class="size-10" fill="none" stroke="current">
+              <use xlink:href="./assets/checklist.svg"></use>
+            </svg>
+          </div>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-blue via-medium_blue to-purple_text bg-clip-text text-transparent">
+            My Tasks
+          </h1>
         </div>
+        <div class="flex items-center gap-2 text-gray-700">
+          <img src="./assets/progress.svg" alt="progress.svg" class="size-5">
+          <p class="text-sm sm:text-base md:text-lg">x of x tasks concluded</p>
+        </div>
+      </div>
 
-        <!-- content / tasks -->
-            <div class="flex sm:flex-row flex-row sm:justify-center sm:items-center sm:justify-between justify-between justify-center items-center bg-[#FFFFFF] border-gray-200 
-            rounded-md sm:w-48 sm:h-8 px-4 md:w-[60vw] md:h-[8vh] hover:shadow-2xl transition duration-300 hover:border-baby_blue border-[1px] mb-6 sm:gap-4">
-            <div class="flex sm:flex-row flex-row gap-2">
-              <label class="flex items-center gap-2 cursor-pointer">
-                    <input 
-                        type="checkbox" 
-                        class="w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300"
-                    >
-                </label>
-                <p class="md:text-[21px] sm:text-xl">Fazer compras no mercado</p>
-            </div>
-            <div class="flex sm:flex-row flex-row md:gap-2 lg:gap-2">
-               <button class="flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8"><img src="./assets/write.svg" alt="write.svg"></button>
-                <button class="flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8"><img src="./assets/delete.svg" alt="trash.svg"></button>
-            </div>
-            
-               
-            </div>
+      <!-- content / tasks -->
+      <div class="flex justify-between items-center bg-full_white border border-gray-200 rounded-md w-full max-w-2xl px-4 py-3 hover:shadow-2xl transition duration-300 hover:border-baby_blue mb-4">
+        <div class="flex items-center gap-2">
+          <input type="checkbox" class="w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300">
+          <p class="text-base sm:text-lg md:text-xl">Fazer compras no mercado</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8">
+            <img src="./assets/write.svg" alt="edit">
+          </button>
+          <button class="flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8">
+            <img src="./assets/delete.svg" alt="delete">
+          </button>
+        </div>
+      </div>
 
-             <div class="flex sm:flex-row flex-row sm:justify-center sm:items-center sm:justify-between justify-between justify-center items-center bg-[#FFFFFF] border-gray-200 
-            rounded-md sm:w-48 sm:h-8 px-4 md:w-[60vw] md:h-[8vh] hover:shadow-2xl transition duration-300 hover:border-baby_blue border-[1px]">
-            <div class="flex sm:flex-row flex-row gap-2">
-              <label class="flex items-center gap-2 cursor-pointer">
-                    <input 
-                        type="checkbox" 
-                        class="w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300"
-                    >
-                </label>
-                <p class="md:text-[21px] sm:text-xl">Fazer compras no mercado</p>
-            </div>
-            <div class="flex sm:flex-row flex-row md:gap-2 lg:gap-2">
-               <button class="flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8"><img src="./assets/write.svg" alt="write.svg"></button>
-                <button class="flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8"><img src="./assets/delete.svg" alt="trash.svg"></button>
-            </div>
-            
-               
-            </div>
+      <div class="flex justify-between items-center bg-full_white border border-gray-200 rounded-md w-full max-w-2xl px-4 py-3 hover:shadow-2xl transition duration-300 hover:border-baby_blue mb-4">
+        <div class="flex items-center gap-2">
+          <input type="checkbox" class="w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300">
+          <p class="text-base sm:text-lg md:text-xl">Estudar TailwindCSS</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8">
+            <img src="./assets/write.svg" alt="edit">
+          </button>
+          <button class="flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8">
+            <img src="./assets/delete.svg" alt="delete">
+          </button>
+        </div>
+      </div>
 
-         <!-- bottom -->
+      <!-- bottom -->
+      <div class="flex justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text mt-8 w-48 sm:w-60 h-12 rounded-full cursor-pointer">
+        <button class="flex items-center gap-2 text-full_white font-bold">
+          <img src="./assets/add.svg" alt="add-icon" class="size-6">
+          Add new task
+        </button>
+      </div>
 
-         <div class="flex flex-row justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text mt-12 w-60 h-10 rounded-full cursor-pointer">
-          <button class="flex md:gap-6 text-full_white font-bold">
-            <img src="./assets/add.svg" alt="add-icon" class=" inline-block size-6">
-             Add new task</button>
-         </div>
+      <!-- hidden form -->
+      <div id="formContainer" class=" flex-col bg-full_white w-full max-w-2xl px-4 py-6 mt-6 shadow-2xl rounded-md">
+        <input id="taskInput" type="text" placeholder="Digite sua tarefa..."
+          class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
+        <div class="flex justify-end gap-4 font-semibold">
+          <button id="cancelBtn" class="flex items-center bg-full_white text-sm rounded-full px-4 py-2 border border-gray-200 gap-2">
+            <img src="./assets/close.svg" alt="cancel-icon" class="size-5">
+            Cancel
+          </button>
+          <button id="AddTaskBtn" class="flex items-center bg-gradient-to-r from-btn_light_green to-btn_green rounded-full text-sm text-full_white px-4 py-2 gap-2">
+            <img src="./assets/check.svg" alt="check-icon" class="size-5">
+            Add Task
+          </button>
+        </div>
+      </div>
 
-         <!-- hidden form -->
-         <div id="formContainer" class="flex flex-col bg-full_white sm:w-48 sm:h-12 px-4 md:w-[60vw] md:h-[20vh] shadow-2xl transition duration-300 rounded-md">
-          <!-- form will be here -->
-           <div class="">
-              <input 
-                id="taskInput" 
-                type="text" 
-                class="flex justify-center items-center mt-2 border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-[100%] mt-6 mb-6"
-                placeholder="Digite sua tarefa..."
-              >
-              </div>
-              <div class="flex flex-row sm:flex-row justify-end gap-4 font-open_sans font-semibold">
-                <button id="cancelBtn" class="flex justify-center items-center bg-full_white text-[14px] rounded-full w-36 h-[38px] border-gray-200 border-[1px] gap-4">
-                  <img src="./assets/close.svg" alt="cancel-icon" class="inline-block size-5">
-                  Cancel</button>
-                <button id="AddTaskBtn" class="flex justify-center items-center bg-gradient-to-r from-btn_light_green to-btn_green rounded-full text-[14px] text-full_white w-36 h-[38px] border-btn_green gap-4">
-                  <img src="./assets/check.svg" alt="check-icon" class="inline-block size-6">
-                  Add Task</button>
-              </div>
-         </div>
-    </section>
+  </section>
+
 </body>
 </html>

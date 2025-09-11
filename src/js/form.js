@@ -1,13 +1,19 @@
-// Seleciona elementos
+
 const showFormBtn = document.getElementById("showFormBtn");
 const addTaskBtnContainer = document.getElementById("addTaskBtnContainer");
 const formContainer = document.getElementById("formContainer");
-const cancelBtn = document.getElementById("cancelBtn"); // cancel button in form
+const cancelBtn = document.querySelector(".cancelBtn"); // cancel button in form
 const checkBoxes = document.querySelectorAll(".task-checkbox");
 const taskName = document.querySelector(".task-name");
+const changeTaskContainer = document.querySelector(".changeTaskContainer");
+const changeTask = document.getElementById("changeTask");
+const btnItems = document.querySelectorAll(".btn-items");
+const editBtns = document.querySelectorAll(".edit-btn");
+const taskInfo = document.querySelectorAll(".task-info");
+const goBackBtns = document.querySelectorAll(".goBackBtn");
 
 // Show form when you click on "Add new task"
-showFormBtn.addEventListener("click", () => {
+addTaskBtnContainer.addEventListener("click", () => {
   addTaskBtnContainer.classList.add("hidden"); // hide the button
   formContainer.classList.remove("hidden");    // show form
 });
@@ -16,11 +22,11 @@ showFormBtn.addEventListener("click", () => {
 cancelBtn.addEventListener("click", () => {
   formContainer.classList.add("hidden");       // hide form
   addTaskBtnContainer.classList.remove("hidden"); // show button again
-});
+  });
 
 checkBoxes.forEach((checkbox) => {
   checkbox.addEventListener("change", () => {
-    // pega o elemento <p> que está logo ao lado da checkbox
+    // get the <p> element that is right next to the checkbox
     const taskName = checkbox.nextElementSibling;
 
     if (checkbox.checked) {
@@ -28,5 +34,35 @@ checkBoxes.forEach((checkbox) => {
     } else {
       taskName.classList.remove("line-through", "text-gray-400");
     }
+  });
+});
+
+editBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const taskContainer = btn.closest(".task-container");
+
+    // hide elements
+    taskContainer.querySelector(".task-info").classList.add("hidden");
+    taskContainer.querySelector(".btn-items").classList.add("hidden");
+
+    // show form
+    taskContainer.querySelector(".changeTaskContainer").classList.remove("hidden");
+  });
+});
+
+
+
+// Cancel and go back to the task name
+
+goBackBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const taskContainer = btn.closest(".task-container");
+
+    // show elements
+    taskContainer.querySelector(".task-info").classList.remove("hidden");
+    taskContainer.querySelector(".btn-items").classList.remove("hidden");
+
+    // hide form
+    taskContainer.querySelector(".changeTaskContainer").classList.add("hidden");
   });
 });

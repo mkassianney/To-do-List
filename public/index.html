@@ -6,7 +6,7 @@
     <title>TO DO</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <script src="../src/js/form.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -93,15 +93,16 @@
       </div>
 
       <!-- bottom -->
-      <div class="flex justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text mt-8 w-48 sm:w-60 h-12 rounded-full cursor-pointer">
-        <button class="flex items-center gap-2 text-full_white font-bold">
+      <div id="addTaskBtnContainer"
+      class="flex justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text mt-8 w-48 sm:w-60 h-12 rounded-full hover:scale-105 transition duration-300 cursor-pointer">
+        <button id="showFormBtn" class="flex items-center gap-2 text-full_white font-bold">
           <img src="./assets/add.svg" alt="add-icon" class="size-6">
           Add new task
         </button>
       </div>
 
       <!-- hidden form -->
-      <div id="formContainer" class=" flex-col bg-full_white w-full max-w-2xl px-4 py-6 mt-6 shadow-2xl rounded-md">
+      <div id="formContainer" class="hidden flex-col bg-full_white w-full max-w-2xl px-4 py-6 mt-6 shadow-2xl rounded-md">
         <input id="taskInput" type="text" placeholder="Digite sua tarefa..."
           class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
         <div class="flex justify-end gap-4 font-semibold">
@@ -116,6 +117,7 @@
         </div>
       </div>
 
+      <script src="./src/js/form.js"></script>
   </section>
 
 </body>

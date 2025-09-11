@@ -1,0 +1,17 @@
+{
+    "name": "mkassianney/to-do",
+    "description": "This project is a to-do list application built with PHP, Tailwind CSS, JavaScript and AWS.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mkassianney\\ToDo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maria Eduarda Kassianney da Silva",
+            "email": "mariaeduardakassianney.silva@ucsal.edu.br"
+        }
+    ],
+    "require": {}
+}

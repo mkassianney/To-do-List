@@ -6,7 +6,7 @@
     <title>TO DO</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../src/js/form.js" defer></script>
+    <script src="./js/form.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -45,18 +45,18 @@
   
       <!-- header -->
       <div class="flex flex-col items-center gap-4 mb-12 text-center">
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4 ">
           <div class="flex justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text w-14 h-14 rounded-xl">
             <svg class="size-10" fill="none" stroke="current">
-              <use xlink:href="./assets/checklist.svg"></use>
+              <use xlink:href="../../public/assets/checklist.svg"></use>
             </svg>
           </div>
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight bg-gradient-to-r from-blue via-medium_blue to-purple_text bg-clip-text text-transparent">
+          <h1 class="py-4 text-4xl sm:text-5xl md:text-6xl align-middle font-bold bg-gradient-to-r from-blue via-medium_blue to-purple_text bg-clip-text text-transparent">
             My Tasks
           </h1>
         </div>
         <div class="flex items-center gap-2 text-gray-700">
-          <img src="./assets/progress.svg" alt="progress.svg" class="size-5">
+          <img src="../../public/assets/progress.svg" alt="progress.svg" class="size-5">
           <p class="text-sm sm:text-base md:text-lg">x of x tasks concluded</p>
         </div>
       </div>
@@ -69,10 +69,10 @@
         </div>
         <div class="btn-items flex gap-2">
           <button class="edit-btn flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8">
-            <img src="./assets/write.svg" alt="edit">
+            <img src="../../public/assets/write.svg" alt="edit">
           </button>
           <button class="delete-btn flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8">
-            <img src="./assets/delete.svg" alt="delete">
+            <img src="../../public/assets/delete.svg" alt="delete">
           </button>
         </div>
         <!-- hidden option -->
@@ -81,11 +81,11 @@
             class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
               <div class="flex justify-end gap-4 font-semibold">
               <button class="goBackBtn flex items-center bg-full_white text-sm rounded-full px-4 py-2 border border-gray-200 gap-2">
-                <img src="./assets/close.svg" alt="cancel-icon" class="size-5">
+                <img src="../../public/assets/close.svg" alt="cancel-icon" class="size-5">
                 Cancel
               </button>
               <button class="flex items-center bg-gradient-to-r from-btn_light_green to-btn_green rounded-full text-sm text-full_white px-4 py-2 gap-2">
-                <img src="./assets/check.svg" alt="check-icon" class="size-5">
+                <img src="../../public/assets/check.svg" alt="check-icon" class="size-5">
                 Add Task
               </button>
             </div>
@@ -99,10 +99,10 @@
         </div>
         <div class="flex gap-2">
           <button id="editBtn" class="flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8">
-            <img src="./assets/write.svg" alt="edit">
+            <img src="../../public/assets/write.svg" alt="edit">
           </button>
           <button id="deleteBtn" class="flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8">
-            <img src="./assets/delete.svg" alt="delete">
+            <img src="../../public/assets/delete.svg" alt="delete">
           </button>
         </div>
       </div>
@@ -111,7 +111,7 @@
       <div id="addTaskBtnContainer"
       class="flex justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text mt-8 w-48 sm:w-60 h-12 rounded-full hover:scale-105 transition duration-300 cursor-pointer">
         <button id="showFormBtn" class="flex items-center gap-2 text-full_white font-bold">
-          <img src="./assets/add.svg" alt="add-icon" class="size-6">
+          <img src="../../public/assets/add.svg" alt="add-icon" class="size-6">
           Add new task
         </button>
       </div>
@@ -122,17 +122,17 @@
           class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
         <div class="flex justify-end gap-4 font-semibold">
           <button class="cancelBtn flex items-center bg-full_white text-sm rounded-full px-4 py-2 border border-gray-200 gap-2">
-            <img src="./assets/close.svg" alt="cancel-icon" class="size-5">
+            <img src="../../public/assets/close.svg" alt="cancel-icon" class="size-5">
             Cancel
           </button>
           <button id="AddTaskBtn" class="flex items-center bg-gradient-to-r from-btn_light_green to-btn_green rounded-full text-sm text-full_white px-4 py-2 gap-2">
-            <img src="./assets/check.svg" alt="check-icon" class="size-5">
+            <img src="../../public/assets/check.svg" alt="check-icon" class="size-5">
             Add Task
           </button>
         </div>
       </div>
 
-      <script src="./src/js/form.js"></script>
+      <script src="../../public/js/form.js"></script>
   </section>
 
 </body>

@@ -7,8 +7,8 @@ class ConnectionFactory
 {
     private static ?PDO $instance = null;
     private static string $dsn = "pgsql:host=localhost;dbname=to_do;port=5432";
-    private static string $username = "postgres";
-    private static string $password = "moon";
+    private static string $username = "root";
+    private static string $password = "root";
 
     private function __construct()
     {

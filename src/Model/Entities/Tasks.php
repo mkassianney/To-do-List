@@ -1,5 +1,7 @@
 <?php
 
+namespace List\Model\Entities;
+
 class Tasks
 {
     private ?int $id;
@@ -9,6 +11,16 @@ class Tasks
     {
         $this->id = $id;
         $this->description = $description;
+    }
+
+    public function getId(): ?int 
+    {
+        return $this->id;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->description;
     }
 
 }

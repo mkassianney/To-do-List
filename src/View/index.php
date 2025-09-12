@@ -1,3 +1,14 @@
+<?php
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use List\Model\DAO\TaskAccess;
+
+$taskAccess = new TaskAccess();
+$tasks = $taskAccess->getAllTasks();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,10 +73,13 @@
       </div>
 
       <!-- content / tasks -->
+      <?php foreach ($tasks as $task): ?> 
+
       <div class="task-container flex justify-between items-center bg-full_white border border-gray-200 rounded-md w-full max-w-2xl px-4 py-3 hover:shadow-2xl transition duration-300 hover:border-baby_blue mb-4">
+        
         <div class="task-info flex items-center gap-2">
           <input type="checkbox" class="task-checkbox w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300">
-          <p class="task-name text-base sm:text-lg md:text-xl">Fazer compras no mercado</p>
+          <p class="task-name text-base sm:text-lg md:text-xl"><?= $task->getDescription() ?></p>
         </div>
         <div class="btn-items flex gap-2">
           <button class="edit-btn flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8">
@@ -75,6 +89,7 @@
             <img src="../../public/assets/delete.svg" alt="delete">
           </button>
         </div>
+        
         <!-- hidden option -->
           <div class="changeTaskContainer hidden flex-col bg-full_white w-full max-w-2xl px-4 py-6 mt-6">
             <input id="changeTask" type="text" placeholder="Digite sua tarefa..."
@@ -91,21 +106,8 @@
             </div>
           </div>
       </div>
-
-      <div class="flex justify-between items-center bg-full_white border border-gray-200 rounded-md w-full max-w-2xl px-4 py-3 hover:shadow-2xl transition duration-300 hover:border-baby_blue mb-4">
-        <div class="flex items-center gap-2">
-          <input type="checkbox" class="task-checkbox w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300">
-          <p class="task-name text-base sm:text-lg md:text-xl">Estudar TailwindCSS</p>
-        </div>
-        <div class="flex gap-2">
-          <button id="editBtn" class="flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8">
-            <img src="../../public/assets/write.svg" alt="edit">
-          </button>
-          <button id="deleteBtn" class="flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8">
-            <img src="../../public/assets/delete.svg" alt="delete">
-          </button>
-        </div>
-      </div>
+      
+        <?php endforeach; ?>
 
       <!-- bottom -->
       <div id="addTaskBtnContainer"

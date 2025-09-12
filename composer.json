@@ -4,7 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Mkassianney\\ToDo\\": "src/"
+            "List\\": "src/"
         }
     },
     "authors": [

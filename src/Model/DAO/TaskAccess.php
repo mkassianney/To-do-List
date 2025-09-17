@@ -10,7 +10,6 @@ class TaskAccess
 {
     private PDO $connection;
 
-    // Initialize the data base connection
     public function __construct()
     {
         $this->connection = ConnectionFactory::getInstance();

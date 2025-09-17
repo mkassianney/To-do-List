@@ -7,7 +7,7 @@ use List\Model\Entities\Tasks;
 
 
     $taskAccess = new TaskAccess();
-    $newTask = new Tasks(null, $_POST['new-description']); // id = null
+    $newTask = new Tasks(null, $_POST['new-description']);
     $taskAccess->addTask($newTask);
 
     header("Location: index.php");

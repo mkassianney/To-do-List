@@ -10,11 +10,13 @@ class TaskAccess
 {
     private PDO $connection;
 
+    // Initialize the data base connection
     public function __construct()
     {
         $this->connection = ConnectionFactory::getInstance();
     }
 
+    // Create a new task
     public function addTask(Tasks $tasks) : void
     {
         $sql = "INSERT INTO list (description, completed) VALUES (:description, :completed)";
@@ -24,6 +26,7 @@ class TaskAccess
         $stmt->execute();
     }
     
+    // Delete a task by id
     public function deleteTask(int $id) : void
     {
         $sql = "DELETE FROM list WHERE id = :id";
@@ -32,6 +35,7 @@ class TaskAccess
         $stmt->execute();
     }
 
+    // Get all tasks
     public function getAllTasks() : Array
     {
         $sql = "SELECT * FROM list ORDER BY id";
@@ -48,12 +52,11 @@ class TaskAccess
 
     public function updateStatus(int $id, bool $completed): bool
     {
-        $sql = "UPDATE list SET completed = :completed WHERE id = :id";
-        $stmt = $this->connection->prepare($sql);
-        return $stmt->execute([
-            ':completed' => $completed,
-            ':id' => $id
-        ]);
+    $sql = "UPDATE list SET completed = :completed WHERE id = :id";
+    $stmt = $this->connection->prepare($sql);
+    $stmt->bindValue(':completed', $completed ? 'true' : 'false', PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+    return $stmt->execute();
     }
 
     public function updateTask(Tasks $task)
@@ -66,4 +69,18 @@ class TaskAccess
 
     }
 
+    private function hydrateList(\PDOStatement $stmt): array
+    {
+        $tasksList = $stmt->fetchAll(fetch_style: PDO::FETCH_ASSOC);
+        $tasksData = [];
+
+        foreach ($tasksList as $data) {
+            $tasksData[] = new Tasks(
+                $data['id'],
+                $data['description']
+            );
+        }
+
+        return $tasksData;
+    }
 }

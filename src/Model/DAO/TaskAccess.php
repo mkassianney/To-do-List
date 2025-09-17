@@ -16,17 +16,15 @@ class TaskAccess
         $this->connection = ConnectionFactory::getInstance();
     }
 
-    // Create a new task
-    public function addTask(int $id, string $description) : void
+    public function addTask(Tasks $tasks) : void
     {
-        $sql = "INSERT INTO list (id, description) VALUES (:id, :description)";
+        $sql = "INSERT INTO list (description, completed) VALUES (:description, :completed)";
         $stmt = $this->connection->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+        $stmt->bindValue(':description', $tasks->getDescription(), PDO::PARAM_STR);
+        $stmt->bindValue(':completed', $tasks->isCompleted(), PDO::PARAM_BOOL);
         $stmt->execute();
     }
     
-    // Delete a task by id
     public function deleteTask(int $id) : void
     {
         $sql = "DELETE FROM list WHERE id = :id";
@@ -35,7 +33,6 @@ class TaskAccess
         $stmt->execute();
     }
 
-    // Get all tasks
     public function getAllTasks() : Array
     {
         $sql = "SELECT * FROM list ORDER BY id";
@@ -44,9 +41,30 @@ class TaskAccess
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $data = array_map(function ($tasks) {
-            return new Tasks($tasks['id'], $tasks['description']);
+            return new Tasks($tasks['id'], $tasks['description'], $tasks['completed']);
         }, $result);
 
         return $data;
     }
+
+    public function updateStatus(int $id, bool $completed): bool
+    {
+        $sql = "UPDATE list SET completed = :completed WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([
+            ':completed' => $completed,
+            ':id' => $id
+        ]);
+    }
+
+    public function updateTask(Tasks $task)
+    {
+        $sql = "UPDATE list SET description = :description WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue(':id', $task->getId(), PDO::PARAM_INT);
+        $stmt->bindValue(':description', $task->getDescription(), PDO::PARAM_STR);
+        $stmt->execute();
+
+    }
+
 }

@@ -1,16 +1,18 @@
-
 const showFormBtn = document.getElementById("showFormBtn");
 const addTaskBtnContainer = document.getElementById("addTaskBtnContainer");
 const formContainer = document.getElementById("formContainer");
-const cancelBtn = document.querySelector(".cancelBtn"); // cancel button in form
+const changeTask = document.getElementById("changeTask");
+const counter = document.getElementById('taskCounter');
+
+const cancelBtn = document.querySelector(".cancelBtn"); 
 const checkBoxes = document.querySelectorAll(".task-checkbox");
 const taskName = document.querySelector(".task-name");
 const changeTaskContainer = document.querySelector(".changeTaskContainer");
-const changeTask = document.getElementById("changeTask");
 const btnItems = document.querySelectorAll(".btn-items");
 const editBtns = document.querySelectorAll(".edit-btn");
 const taskInfo = document.querySelectorAll(".task-info");
 const goBackBtns = document.querySelectorAll(".goBackBtn");
+const addTask = document.querySelectorAll(".add-task");
 
 // Show form when you click on "Add new task"
 addTaskBtnContainer.addEventListener("click", () => {
@@ -24,6 +26,7 @@ cancelBtn.addEventListener("click", () => {
   addTaskBtnContainer.classList.remove("hidden"); // show button again
   });
 
+// Add a line-through style to the task name when checkbox is marked
 checkBoxes.forEach((checkbox) => {
   checkbox.addEventListener("change", () => {
     // get the <p> element that is right next to the checkbox
@@ -37,6 +40,7 @@ checkBoxes.forEach((checkbox) => {
   });
 });
 
+// Show form when you click on "Edit" button
 editBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const taskContainer = btn.closest(".task-container");
@@ -50,10 +54,7 @@ editBtns.forEach((btn) => {
   });
 });
 
-
-
 // Cancel and go back to the task name
-
 goBackBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     const taskContainer = btn.closest(".task-container");
@@ -65,4 +66,18 @@ goBackBtns.forEach((btn) => {
     // hide form
     taskContainer.querySelector(".changeTaskContainer").classList.add("hidden");
   });
+});
+
+document.querySelectorAll('.task-checkbox').forEach(cb => {
+    cb.addEventListener('change', function() {
+        const id = this.dataset.id;
+        const completed = this.checked ? true : false;
+
+        // Send to the PHP
+        fetch('updateTask.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: `id=${id}&completed=${true}`
+        });
+    });
 });

@@ -77,17 +77,20 @@ $verify = $taskAccess->getAllTasks();
 
       <!-- if there is no tasks -->
 
-      <div class="hidden flex flex-col justify-center items-center gap-4 mb-4">
-        <div class="flex justify-center items-center bg-light_gray w-16 h-16 rounded-full">
-            <svg class="size-10" fill="none" stroke="current">
-              <use xlink:href="../../public/assets/big-checklist.svg"></use>
-            </svg>
+      <?php if (empty($tasks)): ?>
+    <!-- bloco que aparece quando não há tarefas -->
+        <div class="flex flex-col justify-center items-center gap-4 mb-4">
+            <div class="flex justify-center items-center bg-light_gray w-16 h-16 rounded-full">
+                <svg class="size-10" fill="none" stroke="current">
+                  <use xlink:href="../../public/assets/big-checklist.svg"></use>
+                </svg>
+            </div>
+            <div class="flex flex-col justify-center items-center">
+                <h2 class="text-dark_gray text-xl sm:text-2xl md:text-2xl">Nenhuma tarefa ainda</h2>
+                <p class="text-medium_gray text-md sm:text-lg md:text-xl">Adicione sua primeira tarefa para começar!</p>
+            </div>
         </div>
-        <div class="flex flex-col justify-center items-center">
-            <h2 class="text-dark_gray text-xl sm:text-2xl md:text-2xl">Nenhuma tarefa ainda</h2>
-            <p class="text-medium_gray text-md sm:text-lg md:text-xl">Adicione sua primeira tarefa para começar!</p>
-        </div>
-      </div>
+      <?php else: ?>
 
       <!-- content / tasks -->
       <?php foreach ($tasks as $task): ?> 
@@ -95,48 +98,63 @@ $verify = $taskAccess->getAllTasks();
       <div class="task-container flex justify-between items-center bg-full_white border border-gray-200 rounded-md w-full max-w-2xl px-4 py-3 hover:shadow-2xl transition duration-700 hover:border-baby_blue hover:scale-110 mb-4">
         
         <div class="task-info flex items-center gap-2">
-          <input type="checkbox" class="task-checkbox w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300" 
-           
-            <?= $task->isCompleted() ? 'true' : 'false' ?>>
+          <form action="updateStatus.php" method="post">
+            <!-- Garantir que sempre envia algo -->
+            <input type="hidden" name="completed" value="0">
 
-          <p class="task-name text-base sm:text-lg md:text-xl"><?= $task->getDescription() ?></p>
+            <!-- Checkbox com valor 1 -->
+            <input 
+              type="checkbox" 
+              name="completed" 
+              value="1" 
+              class="task-checkbox flex w-5 h-5 accent-baby_blue rounded border-baby_blue transition duration-300"
+              <?= $task->isCompleted() ? 'checked' : '' ?>
+              onchange="this.form.submit()">
+
+            <input type="hidden" name="id" value="<?= $task->getId() ?>">
+          </form>
+
+          <p class="task-name text-base sm:text-lg md:text-xl">
+            <?= $task->getDescription() ?>
+          </p>
         </div>
-        
+              
         <div class="btn-items flex gap-2">
           <button class="edit-btn flex justify-center items-center cursor-pointer hover:bg-baby_blue hover:bg-opacity-10 rounded-md w-8 h-8">
             <img src="../../public/assets/write.svg" alt="edit">
           </button>
+
           <form action="deleteTask.php" method="post">
-              <button class="delete-btn flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8">
-               <img src="../../public/assets/delete.svg" alt="delete">
-                <input type="hidden" name="id" value="<?= $task->getId() ?>">
-                 <botton type="submit" class="deleteTask"></button>
-              </button>
+            <button class="delete-btn flex justify-center items-center cursor-pointer hover:bg-red hover:bg-opacity-10 rounded-md w-8 h-8">
+              <img src="../../public/assets/delete.svg" alt="delete">
+              <input type="hidden" name="id" value="<?= $task->getId() ?>">
+            </button>
           </form>
         </div>
-        
+              
         <!-- hidden option -->
-          <div class="changeTaskContainer hidden flex-col bg-full_white w-full max-w-2xl px-4 py-6 mt-6">
-            <form action="updateTask.php" method="post">
+        <div class="changeTaskContainer hidden flex-col bg-full_white w-full max-w-2xl px-4 py-6 mt-6">
+          <form action="updateTask.php" method="post">
             <input id="changeTask" type="text" name="description" placeholder="Digite sua tarefa..."
-            class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
-              <div class="flex justify-end gap-4 font-semibold">
+              class="w-full border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4">
+            
+            <div class="flex justify-end gap-4 font-semibold">
               <button class="goBackBtn flex items-center bg-full_white text-sm rounded-full px-4 py-2 border border-gray-200 gap-2">
                 <img src="../../public/assets/close.svg" alt="cancel-icon" class="size-5">
                 Cancel
               </button>
-               
-                 <input type="hidden" name="id" value="<?= $task->getId() ?>">
-                  <button type="submit" class="add-task flex items-center bg-gradient-to-r from-btn_light_green to-btn_green rounded-full text-sm text-full_white px-4 py-2 gap-2 addTask">
-                    <img src="../../public/assets/check.svg" alt="check-icon" class="size-5">
-                       Add Task
-                    </button>
-              </form>
+              <input type="hidden" name="id" value="<?= $task->getId() ?>">
+              <button type="submit" class="add-task flex items-center bg-gradient-to-r from-btn_light_green to-btn_green rounded-full text-sm text-full_white px-4 py-2 gap-2 addTask">
+                <img src="../../public/assets/check.svg" alt="check-icon" class="size-5">
+                Add Task
+              </button>
             </div>
-          </div>
+          </form>
+        </div>
       </div>
-      
+
         <?php endforeach; ?>
+      <?php endif; ?>
 
       <!-- bottom -->
       <div id="addTaskBtnContainer"

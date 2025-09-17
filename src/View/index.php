@@ -26,17 +26,17 @@ $tasks = $taskAccess->getAllTasks();
       theme: {
         extend: {
           colors: {
-            full_white: '#FFFFFF', // pure white
-            white: '#E7F2EF', // soft white
-            purple: '#EBD6FB', // light purple
-            pink: '#FFDFEF', // light pink
+            full_white: '#FFFFFF', 
+            white: '#E7F2EF', 
+            purple: '#EBD6FB', 
+            pink: '#FFDFEF',
             blue: '#1e13f2',
-            baby_blue: '#3f63f2', // vivid blue
+            baby_blue: '#3f63f2', 
             medium_blue: '#7307f7',
             purple_text: '#c414ff',
             red: '#a31010',
             green: '#0f8c1e',
-            btn_light_green: '#12b839', // vivid green
+            btn_light_green: '#12b839', 
             btn_green: '#0b7823',
             light_gray: '#d4d4d4ff',
             dark_gray: '#4a4a4a',
@@ -57,7 +57,6 @@ $tasks = $taskAccess->getAllTasks();
 <body>
     <section class="flex flex-col justify-center items-center min-h-screen py-12 px-4 bg-[radial-gradient(circle_at_top_left,#EBD6FB_0%,#E7F2EF_50%,transparent_70%),radial-gradient(circle_at_bottom_right,#FFDFEF_0%,#E7F2EF_50%,transparent_70%)]">
   
-      <!-- header -->
       <div class="flex flex-col items-center gap-4 mb-12 text-center">
         <div class="flex items-center gap-4 ">
           <div class="flex justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text w-14 h-14 rounded-xl">
@@ -72,10 +71,8 @@ $tasks = $taskAccess->getAllTasks();
         
       </div>
 
-      <!-- if there is no tasks -->
-
       <?php if (empty($tasks)): ?>
-    <!-- bloco que aparece quando não há tarefas -->
+
         <div class="flex flex-col justify-center items-center gap-4 mb-4">
             <div class="flex justify-center items-center bg-light_gray w-16 h-16 rounded-full">
                 <svg class="size-10" fill="none" stroke="current">
@@ -89,17 +86,15 @@ $tasks = $taskAccess->getAllTasks();
         </div>
       <?php else: ?>
 
-      <!-- content / tasks -->
       <?php foreach ($tasks as $task): ?> 
 
       <div class="task-container flex justify-between items-center bg-full_white border border-gray-200 rounded-md w-full max-w-2xl px-4 py-3 hover:shadow-2xl transition duration-700 hover:border-baby_blue hover:scale-110 mb-4">
         
         <div class="task-info flex flex-row items-center gap-2">
           <form action="updateStatus.php" method="post" class="flex flex-row items-center gap-2">
-            <!-- Garantir que sempre envia algo -->
+
             <input type="hidden" name="completed" value="0">
 
-            <!-- Checkbox com valor 1 -->
             <input 
               type="checkbox" 
               name="completed" 
@@ -131,7 +126,6 @@ $tasks = $taskAccess->getAllTasks();
           </form>
         </div>
               
-        <!-- hidden option -->
         <div class="changeTaskContainer hidden flex-col bg-full_white w-full max-w-2xl px-4 py-6 mt-6">
           <form action="updateTask.php" method="post">
             <input id="changeTask" type="text" name="description" placeholder="Digite sua tarefa..."
@@ -155,7 +149,6 @@ $tasks = $taskAccess->getAllTasks();
         <?php endforeach; ?>
       <?php endif; ?>
 
-      <!-- bottom -->
       <div id="addTaskBtnContainer"
       class="flex justify-center items-center bg-gradient-to-r from-blue via-medium_blue to-purple_text mt-8 w-48 sm:w-60 h-12 rounded-full hover:scale-105 transition duration-300 cursor-pointer">
         <button id="showFormBtn" class="flex items-center gap-2 text-full_white font-bold">
@@ -164,7 +157,6 @@ $tasks = $taskAccess->getAllTasks();
         </button>
       </div>
 
-      <!-- hidden form -->
       <div id="formContainer" class="hidden flex-col bg-full_white w-full max-w-2xl px-4 py-6 mt-6 shadow-2xl rounded-md">
         <form action="addTask.php" method="post">
           <input id="taskInput" type="text" name="new-description" placeholder="Digite sua tarefa..."
